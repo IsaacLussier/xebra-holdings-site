@@ -1,0 +1,255 @@
+<!-- Xebra Holdings LLC — Terms & Conditions. Self-contained fragment for GHL Custom Code / HTML element. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="xh">
+<style>
+.xh {
+  --black: #0B0B0D;
+  --black-soft: #17171B;
+  --off-white: #F7F5F0;
+  --off-white-dim: #EAE7DF;
+  --purple: #A742FF;
+  --purple-light: #C98BFF;
+  --gray: #6E6E74;
+  --border: rgba(11,11,13,.12);
+  --border-light: rgba(247,245,240,.16);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--black);
+  background: var(--off-white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.xh * { box-sizing: border-box; }
+.xh h1, .xh h2, .xh .x-logo {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.xh a { color: inherit; text-decoration: none; }
+.xh .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- signature stripe divider ---------- */
+.xh .stripes {
+  height: 14px;
+  width: 100%;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--black) 0, var(--black) 14px,
+    var(--off-white) 14px, var(--off-white) 28px);
+}
+
+/* ---------- header ---------- */
+.xh header {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+}
+.xh .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+.xh .x-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+.xh .x-logo .sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+.xh .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.xh .nav-links a:hover { color: var(--purple); }
+.xh .nav-cta {
+  background: var(--black);
+  color: var(--off-white) !important;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: box-shadow .15s ease;
+}
+.xh .nav-cta:hover { box-shadow: 0 0 0 2px var(--purple); }
+
+/* ---------- page title band ---------- */
+.xh .page-head {
+  background: var(--black);
+  color: var(--off-white);
+  padding: 56px 0 60px;
+}
+.xh .page-head .kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.xh .page-head .kicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--purple);
+}
+.xh .page-head h1 { font-size: 36px; line-height: 1.15; }
+.xh .page-head .updated {
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: rgba(247,245,240,.55);
+}
+
+/* ---------- legal body ---------- */
+.xh .legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 28px 80px;
+}
+.xh .legal h2 {
+  font-size: 21px;
+  margin: 44px 0 14px;
+}
+.xh .legal h2:first-child { margin-top: 0; }
+.xh .legal p { margin: 0 0 16px; font-size: 15.5px; }
+.xh .legal ul { margin: 0 0 16px; padding-left: 22px; font-size: 15.5px; }
+.xh .legal li { margin-bottom: 8px; }
+.xh .legal a { color: var(--purple); font-weight: 500; }
+.xh .legal a:hover { text-decoration: underline; }
+.xh .callout {
+  border-left: 3px solid var(--purple);
+  background: rgba(11,11,13,.035);
+  padding: 18px 22px;
+  margin: 0 0 16px;
+}
+.xh .callout p { margin: 0 0 12px; }
+.xh .callout p:last-child { margin-bottom: 0; }
+
+/* ---------- footer ---------- */
+.xh footer {
+  background: var(--black);
+  color: rgba(247,245,240,.55);
+  padding: 32px 0 40px;
+  font-size: 13px;
+}
+.xh footer .foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.xh footer a:hover { color: var(--purple-light); }
+.xh footer .foot-links { display: flex; gap: 22px; }
+
+@media (max-width: 860px) {
+  .xh .nav-links { display: none; }
+  .xh .page-head h1 { font-size: 28px; }
+}
+</style>
+
+<header>
+  <div class="nav wrap">
+    <div class="x-logo">Xebra<span class="sub">Consulting</span></div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+      <a class="nav-cta" href="mailto:isaac@xebraholdings.com">Email Us</a>
+    </nav>
+  </div>
+</header>
+
+<div class="stripes"></div>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">Xebra Holdings LLC</span>
+    <h1>Terms &amp; Conditions</h1>
+    <div class="updated">Last updated: July 13, 2026</div>
+  </div>
+</section>
+
+<div class="legal">
+
+  <h2>Agreement to These Terms</h2>
+  <p>These Terms &amp; Conditions ("Terms") govern your use of the website and services of Xebra Holdings LLC ("Xebra," "we," "us," or "our"), a Michigan limited liability company. By using our website, contacting us, or receiving communications through our services, you agree to these Terms. If you do not agree, please do not use our services.</p>
+
+  <h2>Our Services</h2>
+  <p>Xebra provides SMS-based automation services to home service businesses, including missed-call-to-text responses, appointment booking and reminders, lead follow-up messaging, and review requests. Messages sent through our systems are transactional in nature — they relate to calls you placed, inquiries you made, or services you requested.</p>
+
+  <h2>SMS Program Terms</h2>
+  <div class="callout">
+    <p><strong>Program description:</strong> When you call or text a business using our services, or otherwise provide your phone number and consent, you may receive transactional text messages including missed-call follow-ups, appointment confirmations and reminders, responses to service inquiries, and review requests.</p>
+    <p><strong>Message frequency:</strong> Message frequency varies depending on your interactions with us.</p>
+    <p><strong>Fees:</strong> Message and data rates may apply. Charges are billed by your mobile carrier according to your mobile plan.</p>
+    <p><strong>Opt out:</strong> You can cancel the SMS service at any time by replying <strong>STOP</strong> to any message. After you send STOP, we will send a final message confirming you have been unsubscribed, and you will receive no further messages. To rejoin, contact us or initiate contact again and provide consent.</p>
+    <p><strong>Help:</strong> Reply <strong>HELP</strong> to any message for assistance, or contact us directly at <a href="mailto:isaac@xebraholdings.com">isaac@xebraholdings.com</a>.</p>
+    <p><strong>Consent:</strong> Consent to receive text messages is not a condition of purchasing any goods or services.</p>
+    <p><strong>Carrier liability:</strong> Carriers are not liable for delayed or undelivered messages.</p>
+  </div>
+  <p>For details on how we handle your information, including mobile opt-in data, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+  <h2>Acceptable Use</h2>
+  <p>You agree not to misuse our website or services, including by:</p>
+  <ul>
+    <li>Using them for any unlawful purpose;</li>
+    <li>Attempting to interfere with, disrupt, or gain unauthorized access to our systems;</li>
+    <li>Impersonating another person or entity;</li>
+    <li>Submitting false or misleading information.</li>
+  </ul>
+
+  <h2>Intellectual Property</h2>
+  <p>All content on this website — including text, graphics, logos, and design elements — is the property of Xebra Holdings LLC and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works from this content without our prior written permission.</p>
+
+  <h2>Disclaimers</h2>
+  <p>Our website and services are provided "as is" and "as available" without warranties of any kind, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that our services will be uninterrupted, timely, or error-free.</p>
+
+  <h2>Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, Xebra Holdings LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, arising out of or related to your use of our website or services. Our total liability for any claim arising out of these Terms or our services shall not exceed the amount you paid us, if any, in the twelve months preceding the claim.</p>
+
+  <h2>Indemnification</h2>
+  <p>You agree to indemnify and hold harmless Xebra Holdings LLC and its members, officers, and agents from any claims, damages, liabilities, and expenses (including reasonable attorneys' fees) arising out of your misuse of our website or services or your violation of these Terms.</p>
+
+  <h2>Governing Law</h2>
+  <p>These Terms are governed by the laws of the State of Michigan, without regard to its conflict of law principles. Any dispute arising under these Terms shall be resolved in the state or federal courts located in Michigan.</p>
+
+  <h2>Changes to These Terms</h2>
+  <p>We may update these Terms from time to time. The "Last updated" date at the top of this page reflects the most recent revision. Continued use of our website or services after changes take effect constitutes acceptance of the revised Terms.</p>
+
+  <h2>Contact Us</h2>
+  <p>Questions about these Terms can be directed to:</p>
+  <p>
+    Xebra Holdings LLC<br>
+    Kalamazoo / Battle Creek, Michigan<br>
+    Email: <a href="mailto:isaac@xebraholdings.com">isaac@xebraholdings.com</a>
+  </p>
+
+</div>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>&copy; 2026 Xebra Holdings LLC. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</div>

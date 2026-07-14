@@ -1,0 +1,413 @@
+<!-- Xebra Holdings LLC — Home. Self-contained fragment for GHL Custom Code / HTML element. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="xh">
+<style>
+.xh {
+  --black: #0B0B0D;
+  --black-soft: #17171B;
+  --off-white: #F7F5F0;
+  --off-white-dim: #EAE7DF;
+  --purple: #A742FF;
+  --purple-light: #C98BFF;
+  --purple-glow: rgba(167,66,255,.35);
+  --gray: #6E6E74;
+  --border: rgba(11,11,13,.12);
+  --border-light: rgba(247,245,240,.16);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--black);
+  background: var(--off-white);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.xh * { box-sizing: border-box; }
+.xh h1, .xh h2, .xh h3, .xh .x-logo {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.xh a { color: inherit; text-decoration: none; }
+.xh .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- signature stripe divider ---------- */
+.xh .stripes {
+  height: 14px;
+  width: 100%;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--black) 0, var(--black) 14px,
+    var(--off-white) 14px, var(--off-white) 28px);
+}
+.xh .stripes.on-black {
+  background-image: repeating-linear-gradient(-45deg,
+    var(--off-white) 0, var(--off-white) 14px,
+    var(--black) 14px, var(--black) 28px);
+}
+
+/* ---------- header ---------- */
+.xh header {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+}
+.xh .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+.xh .x-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+.xh .x-logo .sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+.xh .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.xh .nav-links a:hover { color: var(--purple); }
+.xh .nav-cta {
+  background: var(--black);
+  color: var(--off-white) !important;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: box-shadow .15s ease;
+}
+.xh .nav-cta:hover { box-shadow: 0 0 0 2px var(--purple); }
+
+/* ---------- hero ---------- */
+.xh .hero {
+  position: relative;
+  background: var(--black);
+  color: var(--off-white);
+  overflow: hidden;
+  padding: 88px 0 96px;
+}
+.xh .hero-corner {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 320px;
+  height: 320px;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--off-white) 0, var(--off-white) 12px,
+    transparent 12px, transparent 24px);
+  opacity: .10;
+  clip-path: polygon(30% 0, 100% 0, 100% 70%);
+}
+.xh .hero-inner { position: relative; max-width: 720px; }
+.xh .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 22px;
+}
+.xh .hero-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--purple);
+}
+.xh .hero h1 {
+  font-size: 46px;
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.xh .hero h1 em {
+  font-style: normal;
+  color: var(--purple-light);
+}
+.xh .hero p.lead {
+  font-size: 17px;
+  color: rgba(247,245,240,.72);
+  max-width: 540px;
+  margin-bottom: 34px;
+}
+.xh .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.xh .btn-primary {
+  background: var(--purple);
+  color: var(--black);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 3px;
+  box-shadow: 0 0 28px var(--purple-glow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.xh .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 36px var(--purple-glow); }
+.xh .btn-ghost {
+  border: 1.5px solid var(--border-light);
+  color: var(--off-white);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 3px;
+  transition: border-color .15s ease;
+}
+.xh .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+/* ---------- sections ---------- */
+.xh section.pad { padding: 84px 0; }
+.xh .section-head { max-width: 620px; margin-bottom: 52px; }
+.xh .kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.xh .kicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--purple);
+}
+.xh .fit .kicker,
+.xh .cta .kicker {
+  color: var(--off-white);
+}
+.xh .section-head h2 { font-size: 30px; margin-bottom: 14px; }
+.xh .section-head p { color: var(--gray); font-size: 16px; }
+
+.xh .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.xh .card {
+  background: var(--off-white);
+  padding: 34px 28px;
+}
+.xh .card .num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 18px;
+  display: block;
+}
+.xh .card h3 { font-size: 18px; margin-bottom: 10px; }
+.xh .card p { color: var(--gray); font-size: 14.5px; }
+
+/* who we work with */
+.xh .fit {
+  background: var(--black-soft);
+  color: var(--off-white);
+}
+.xh .fit-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.xh .fit h2 { font-size: 28px; margin-bottom: 16px; }
+.xh .fit p { color: rgba(247,245,240,.68); font-size: 15.5px; margin-bottom: 14px; }
+.xh .fit-list { list-style: none; padding: 0; margin: 0; }
+.xh .fit-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 15px;
+  display: flex;
+  gap: 12px;
+}
+.xh .fit-list li:first-child { padding-top: 0; }
+.xh .fit-list li::before {
+  content: "";
+  min-width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border: 1.5px solid var(--off-white);
+  opacity: .55;
+  transform: rotate(45deg);
+}
+
+/* brand statement */
+.xh .brand-line {
+  padding: 72px 0;
+  text-align: center;
+}
+.xh .brand-line p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+.xh .brand-line p span { color: var(--purple); }
+
+/* cta */
+.xh .cta {
+  background: var(--black);
+  color: var(--off-white);
+  text-align: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.xh .cta h2 { font-size: 30px; margin-bottom: 16px; }
+.xh .cta p { color: rgba(247,245,240,.68); font-size: 16px; margin-bottom: 34px; }
+.xh .cta .contact-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  font-size: 15px;
+}
+.xh .cta .contact-row a { font-weight: 600; }
+.xh .cta .contact-row a:hover { color: var(--purple-light); }
+
+/* footer */
+.xh footer {
+  background: var(--black);
+  color: rgba(247,245,240,.55);
+  padding: 32px 0 40px;
+  font-size: 13px;
+}
+.xh footer .foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.xh footer a:hover { color: var(--purple-light); }
+.xh footer .foot-links { display: flex; gap: 22px; }
+
+@media (max-width: 860px) {
+  .xh .cards { grid-template-columns: 1fr; }
+  .xh .fit-grid { grid-template-columns: 1fr; gap: 32px; }
+  .xh .hero h1 { font-size: 34px; }
+  .xh .nav-links { display: none; }
+}
+</style>
+
+<header>
+  <div class="nav wrap">
+    <div class="x-logo">Xebra<span class="sub">Consulting</span></div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+      <a class="nav-cta" href="mailto:isaac@xebraholdings.com">Email Us</a>
+    </nav>
+  </div>
+</header>
+
+<div class="stripes"></div>
+
+<section class="hero">
+  <div class="hero-corner"></div>
+  <div class="wrap hero-inner">
+    <span class="hero-eyebrow">Kalamazoo &amp; Battle Creek, MI</span>
+    <h1>Never miss another lead. <em>Automatically follow up on every one.</em></h1>
+    <p class="lead">Xebra Holdings builds SMS-based automation for home service businesses — missed-call-to-text with instant booking, lead follow-up sequences, and review requests that run themselves.</p>
+    <div class="btn-row">
+      <a class="btn-primary" href="mailto:isaac@xebraholdings.com">Email isaac@xebraholdings.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">What We Do</span>
+      <h2>Three automations. One less thing to think about.</h2>
+      <p>Built on GoHighLevel and tuned specifically for how home service calls actually come in.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>Missed-Call-to-Text</h3>
+        <p>Every missed call triggers an instant text back with a booking link, so a busy afternoon on a job site doesn't cost you the lead.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>Lead Follow-Up</h3>
+        <p>New leads get worked automatically with a timed follow-up sequence, so estimates and inquiries don't go cold waiting on a callback.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Review Requests</h3>
+        <p>Finished jobs trigger a review request at the right moment, turning satisfied customers into visible proof for the next one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fit pad">
+  <div class="wrap fit-grid">
+    <div>
+      <span class="kicker">Who We Work With</span>
+      <h2>Built for owner-operated shops, not enterprise fleets.</h2>
+      <p>We work with HVAC, plumbing, electrical, roofing, and tree service businesses across the Kalamazoo/Battle Creek area — typically 3 to 15 employees, one decision-maker, and no existing field service platform running the show.</p>
+      <p>If that's you, the automation drops in without a system overhaul.</p>
+    </div>
+    <ul class="fit-list">
+      <li>You run an HVAC, plumbing, electrical, roofing, or tree service business</li>
+      <li>You're the one answering the phone, or it's whoever's closest to it</li>
+      <li>You're based in or around Kalamazoo or Battle Creek</li>
+      <li>You've never quite gotten around to setting up real follow-up</li>
+    </ul>
+  </div>
+</section>
+
+<div class="stripes on-black"></div>
+
+<section class="brand-line">
+  <div class="wrap">
+    <p>No two shops run the same way. <span>Xebra</span> automation is built to fit yours.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <span class="kicker">Get Started</span>
+    <h2>Let's stop the leads from slipping through.</h2>
+    <p>A quick email is enough to know if this is a fit for your shop.</p>
+    <a class="btn-primary" href="mailto:isaac@xebraholdings.com">Email Us</a>
+    <div class="contact-row">
+      <a href="mailto:isaac@xebraholdings.com">isaac@xebraholdings.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>&copy; 2026 Xebra Holdings LLC. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</div>
