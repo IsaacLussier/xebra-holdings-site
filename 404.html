@@ -1,0 +1,197 @@
+<!-- Xebra Consulting — 404. Served by Cloudflare for any unmatched path (see wrangler.toml). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="xh">
+<style>
+.xh {
+  --black: #0B0B0D;
+  --off-white: #F7F5F0;
+  --purple: #A742FF;
+  --purple-light: #C98BFF;
+  --purple-glow: rgba(167,66,255,.35);
+  --gray: #6E6E74;
+  --border: rgba(11,11,13,.12);
+  --border-light: rgba(247,245,240,.16);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--off-white);
+  background: var(--black);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.xh * { box-sizing: border-box; }
+.xh h1, .xh h2, .xh .x-logo, .xh .code {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.xh a { color: inherit; text-decoration: none; }
+.xh .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; width: 100%; }
+
+/* header */
+.xh header { border-bottom: 1px solid var(--border-light); }
+.xh .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+.xh .x-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+.xh .x-logo .sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+.xh .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 500; }
+.xh .nav-links a:hover { color: var(--purple-light); }
+
+/* stripe */
+.xh .stripes {
+  height: 14px;
+  width: 100%;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--off-white) 0, var(--off-white) 14px,
+    var(--black) 14px, var(--black) 28px);
+}
+
+/* main */
+.xh .four04 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 72px 0 88px;
+  position: relative;
+  overflow: hidden;
+}
+.xh .four04-corner {
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 340px;
+  height: 340px;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--off-white) 0, var(--off-white) 12px,
+    transparent 12px, transparent 24px);
+  opacity: .07;
+  clip-path: polygon(0 30%, 70% 100%, 0 100%);
+}
+.xh .four04-inner { position: relative; max-width: 560px; }
+.xh .code {
+  font-size: 128px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.xh .code span { color: var(--purple); }
+.xh .divider-mini {
+  width: 72px;
+  height: 8px;
+  margin: 26px auto 30px;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--off-white) 0, var(--off-white) 8px,
+    var(--black) 8px, var(--black) 16px);
+  border: 1px solid var(--border-light);
+}
+.xh .four04 h1 { font-size: 28px; margin-bottom: 14px; }
+.xh .four04 p { color: rgba(247,245,240,.68); font-size: 16px; margin: 0 auto 32px; max-width: 440px; }
+.xh .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.xh .btn-primary {
+  background: var(--purple);
+  color: var(--black);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 3px;
+  box-shadow: 0 0 28px var(--purple-glow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.xh .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 36px var(--purple-glow); }
+.xh .btn-ghost {
+  border: 1.5px solid var(--border-light);
+  color: var(--off-white);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 3px;
+  transition: border-color .15s ease;
+}
+.xh .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+/* footer */
+.xh footer {
+  border-top: 1px solid var(--border-light);
+  color: rgba(247,245,240,.55);
+  padding: 28px 0 34px;
+  font-size: 13px;
+}
+.xh footer .foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.xh footer a:hover { color: var(--purple-light); }
+.xh footer .foot-links { display: flex; gap: 22px; }
+
+@media (max-width: 860px) {
+  .xh .nav-links { display: none; }
+  .xh .code { font-size: 92px; }
+}
+</style>
+
+<header>
+  <div class="nav wrap">
+    <div class="x-logo"><a href="/">Xebra<span class="sub">Consulting</span></a></div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+      <a href="mailto:isaac@xebraholdings.com">Email Us</a>
+    </nav>
+  </div>
+</header>
+
+<div class="stripes"></div>
+
+<main class="four04">
+  <div class="four04-corner"></div>
+  <div class="wrap four04-inner">
+    <div class="code">4<span>0</span>4</div>
+    <div class="divider-mini"></div>
+    <h1>This page wandered off.</h1>
+    <p>The page you're looking for doesn't exist or has moved. Let's get you back on track.</p>
+    <div class="btn-row">
+      <a class="btn-primary" href="/">Back to Home</a>
+      <a class="btn-ghost" href="mailto:isaac@xebraholdings.com">Email Us</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>&copy; 2026 Xebra Holdings LLC. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</div>

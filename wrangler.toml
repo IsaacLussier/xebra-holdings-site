@@ -14,3 +14,5 @@ compatibility_date = "2026-07-15"
 # Default html_handling serves index.html at "/", privacy-policy.html at
 # "/privacy-policy", and terms.html at "/terms" — matching the nav links.
 directory = "."
+# Serve the branded 404.html (with a 404 status) for any unmatched path.
+not_found_handling = "404-page"
