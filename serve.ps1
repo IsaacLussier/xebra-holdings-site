@@ -9,7 +9,7 @@ $listener.Start()
 while ($listener.IsListening) {
     $ctx = $listener.GetContext()
     $path = $ctx.Request.Url.LocalPath.TrimStart('/')
-    if ([string]::IsNullOrWhiteSpace($path)) { $path = "home.html" }
+    if ([string]::IsNullOrWhiteSpace($path)) { $path = "index.html" }
     if ($path -notmatch '\.') { $path = "$path.html" }
     $file = Join-Path $root $path
     if (Test-Path $file -PathType Leaf) {

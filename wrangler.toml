@@ -1,0 +1,16 @@
+# Cloudflare Workers static-assets config.
+#
+# This site is plain static HTML/CSS — there is no Worker script and no build
+# step. Cloudflare runs `npx wrangler deploy`, which uses this file to learn
+# that the repo root IS the site (the [assets] block below). Without it the
+# build fails with "Could not detect a directory containing static files."
+#
+# `name` must match the Worker/project name in the Cloudflare dashboard.
+name = "xebra-holdings-site"
+compatibility_date = "2026-07-15"
+
+[assets]
+# Serve the repo root. Files listed in .assetsignore are NOT uploaded.
+# Default html_handling serves index.html at "/", privacy-policy.html at
+# "/privacy-policy", and terms.html at "/terms" — matching the nav links.
+directory = "."

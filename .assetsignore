@@ -1,0 +1,10 @@
+# Files in the repo root that must NOT be uploaded as public site assets.
+# Without this, Cloudflare would serve e.g. https://xebraholdings.com/CLAUDE.md
+# gitignore syntax; the site pages (index/privacy-policy/terms .html) are kept.
+CLAUDE.md
+README.md
+serve.ps1
+wrangler.toml
+.assetsignore
+.gitignore
+.claude

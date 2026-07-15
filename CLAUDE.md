@@ -41,11 +41,10 @@ the US). GHL's manual/standard campaign registration flow requires:
 - Content that matches the submitted "use case description" (transactional
   SMS related to missed-call follow-up and lead follow-up, not marketing)
 
-A minimal 3-page version (home, privacy policy, terms) already exists in
-this folder — `home.html`, `privacy-policy.html`, `terms.html` — built
-fast to unblock A2P submission. **These are placeholders, not final.** The
-copy and structure are solid; the visual design is intentionally basic and
-is what we're reworking now.
+A 3-page version (home, privacy policy, terms) lives in this folder —
+`index.html`, `privacy-policy.html`, `terms.html`. The July 2026 branding
+rework (near-black / off-white / neon purple, diagonal stripe motif) is
+done; copy and structure are solid.
 
 ## What we're doing now: branding rework
 
@@ -66,7 +65,7 @@ minimum-viable version. Some notes on his preferences to keep in mind:
 
 ## Current state of the 3 files
 
-Location: this project folder, `home.html`, `privacy-policy.html`,
+Location: this project folder, `index.html` (home), `privacy-policy.html`,
 `terms.html`.
 
 - Self-contained HTML fragments (not full documents) — each is a `<div>`
@@ -110,18 +109,31 @@ explicitly if a redesign would require changing this wording.
 
 ## Deployment target
 
-These pages are **not** deployed via a normal git-based host (Vercel,
-Netlify, etc.) — they get pasted manually into GoHighLevel's Custom Code /
-HTML elements inside a GHL Website (not a GHL Funnel — Funnels are for
-single-purpose conversion pages, Websites support normal multi-page
-navigation, which is what Privacy Policy/Terms/Home need).
+**This site is deployed via Cloudflare (Workers static assets), not GHL.**
+The repo lives on GitHub (`IsaacLussier/xebra-holdings-site`, private) and
+auto-deploys on every push to `main`.
 
-Implication: no build step, no framework, no npm dependencies for these
-three files specifically — plain HTML/CSS/vanilla JS only, since that's
-what pastes cleanly into GHL's editor. If Isaac wants a build pipeline
-(React, etc.) for a *future*, fully independent site hosted outside GHL,
-that's a separate, bigger decision — don't assume it here unless he says
-so.
+- Cloudflare runs `npx wrangler deploy`. `wrangler.toml` at the repo root
+  configures an assets-only Worker (`[assets] directory = "."`) — there is
+  no Worker script and no build step. Without `wrangler.toml` the build
+  fails with "Could not detect a directory containing static files."
+- `.assetsignore` keeps non-site files (`CLAUDE.md`, `README.md`,
+  `serve.ps1`, config) from being uploaded as public assets. **If you add
+  any sensitive file to the repo root, add it to `.assetsignore` too** —
+  otherwise it becomes publicly fetchable at xebraholdings.com/<file>.
+- Home page is `index.html` (Cloudflare serves it at `/`). Clean URLs
+  `/privacy-policy` and `/terms` come from the default asset html-handling.
+- Custom domain `xebraholdings.com` is attached in the Cloudflare dashboard.
+- Still no build step / framework / npm for the site itself — plain
+  HTML/CSS/vanilla JS, which also keeps the paste-into-GHL option open.
+
+**GHL is unaffected.** The phone number, calendar, workflows
+(missed-call-to-text, lead follow-up), and A2P 10DLC registration all run on
+GHL's side and don't depend on where the website is hosted. A2P's Website /
+Privacy Policy / Terms URL fields should point to the Cloudflare domain.
+
+To ship a change: edit the HTML, commit, `git push`. Do NOT re-add the
+phone number to the site (see contact note above).
 
 ## Working style / next steps
 

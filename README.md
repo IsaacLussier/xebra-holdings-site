@@ -7,25 +7,38 @@ automation agency operating under Xebra Holdings LLC).
 
 | File | Purpose |
 |---|---|
-| `home.html` | Home page |
+| `index.html` | Home page (served at `/`) |
 | `privacy-policy.html` | Privacy Policy — **required** for A2P 10DLC registration |
 | `terms.html` | Terms & Conditions — **required** for A2P 10DLC registration |
 
 Each file is a **self-contained HTML fragment**: one `<div>` with a scoped
-`<style>` block. They are pasted directly into a GoHighLevel Custom Code /
-HTML element on a GHL **Website** page (not a Funnel). No build step, no
-framework, no npm — plain HTML/CSS only, because that's what pastes cleanly
-into the GHL editor.
+`<style>` block. No build step, no framework, no npm — plain HTML/CSS only.
+(They started as fragments to paste into a GoHighLevel Custom Code element;
+they now double as a standalone static site — see Deployment below.)
 
-## Page slugs
+## Deployment
 
-The nav and footer links in every file expect these slugs in GHL:
+The repo is deployed to **Cloudflare** (Workers static assets) and
+auto-deploys on every push to `main`. Cloudflare runs `npx wrangler deploy`,
+and [`wrangler.toml`](wrangler.toml) tells it the repo root is the site.
+[`.assetsignore`](.assetsignore) keeps non-site files (`CLAUDE.md`, this
+README, `serve.ps1`, config) from being served publicly.
 
-- Home → `/`
-- Privacy Policy → `/privacy-policy`
-- Terms → `/terms`
+Custom domain: `xebraholdings.com`.
 
-If GHL assigns different slugs, update the `href`s in all three files.
+To ship a change: edit the HTML, commit, and `git push`. That's the whole
+loop.
+
+## Page slugs / URLs
+
+Cloudflare's default asset handling serves:
+
+- `index.html` → `/`
+- `privacy-policy.html` → `/privacy-policy`
+- `terms.html` → `/terms`
+
+The nav and footer links point at those clean paths. If you change a
+filename, update the `href`s in all three files to match.
 
 ## Local preview
 
@@ -34,7 +47,7 @@ powershell -ExecutionPolicy Bypass -File .\serve.ps1
 ```
 
 Then open <http://localhost:8934/>. The server resolves clean URLs, so the
-nav links work exactly as they will in GHL.
+nav links behave exactly as they will once deployed.
 
 ## Design system
 
@@ -59,3 +72,7 @@ Both must survive any redesign. See `CLAUDE.md` for full project context.
 Email only: `isaac@xebraholdings.com`. The phone number is deliberately **not**
 published — it's an internal GHL number for outbound automated SMS and cold
 calls and cannot receive inbound calls.
+
+> Note: the site is a standalone frontend on Cloudflare. GoHighLevel still runs
+> the phone number, calendar, workflows, and A2P registration separately — none
+> of that depends on where this website is hosted.
