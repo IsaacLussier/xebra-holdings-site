@@ -1,7 +1,7 @@
 # Xebra Holdings LLC — Website
 
-Three pages for the Xebra Consulting site (the GoHighLevel-based AI
-automation agency operating under Xebra Holdings LLC).
+Three pages for the Xebra Holdings LLC site (a GoHighLevel-based AI
+automation agency).
 
 ## Files
 

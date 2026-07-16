@@ -79,9 +79,9 @@ Location: this project folder, `index.html` (home), `privacy-policy.html`,
 - Signature element: a striped divider (45° diagonal black/off-white
   bars) used as a section break — a subtle, non-literal nod to "Xebra."
   No purple borders on it (Isaac: too much purple).
-- Logo: plain "Xebra" wordmark + small "Consulting" tag — no slash or
-  glyph (Isaac rejected the slash). "Xebra Holdings LLC" stays in the
-  footer copyright and legal-page body text (registered entity name).
+- Logo: "Xebra" wordmark + small "Holdings LLC" tag — no slash or glyph
+  (Isaac rejected the slash). Header reads "Xebra Holdings LLC" (the
+  registered entity name); the "Consulting" wordmark was reverted 7/2026.
 - Contact on the pages: email only, isaac@xebraholdings.com (the only
   live inbox — hello@ does not exist). The phone (269) 394-4135 is
   deliberately NOT published: it's an internal GHL number for outbound
