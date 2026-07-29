@@ -22,12 +22,23 @@ The repo is deployed to **Cloudflare** (Workers static assets) and
 auto-deploys on every push to `main`. Cloudflare runs `npx wrangler deploy`,
 and [`wrangler.toml`](wrangler.toml) tells it the repo root is the site.
 [`.assetsignore`](.assetsignore) keeps non-site files (`CLAUDE.md`, this
-README, `serve.ps1`, config) from being served publicly.
+README, `serve.ps1`, `src/`, config) from being served publicly.
 
 Custom domain: `xebraholdings.com`.
 
 To ship a change: edit the HTML, commit, and `git push`. That's the whole
 loop.
+
+## Contact form backend
+
+The home page's "Contact Us" modal POSTs to `/api/contact`, handled by
+[`src/worker.js`](src/worker.js) + [`src/contact.js`](src/contact.js) — a
+Worker script wired in via `wrangler.toml` (`main = "src/worker.js"`, an
+`ASSETS` binding for the static fallback). It validates the submission,
+filters spam, and forwards leads into **GoHighLevel** (our CRM) via an
+Inbound Webhook, tagged `website-contact-form`, with a full A2P consent
+record. Requires the `GHL_WEBHOOK_URL` secret to be set in the Cloudflare
+dashboard — see `CLAUDE.md` for details.
 
 ## Page slugs / URLs
 

@@ -1,13 +1,19 @@
 # Cloudflare Workers static-assets config.
 #
-# This site is plain static HTML/CSS — there is no Worker script and no build
-# step. Cloudflare runs `npx wrangler deploy`, which uses this file to learn
-# that the repo root IS the site (the [assets] block below). Without it the
-# build fails with "Could not detect a directory containing static files."
+# The site itself is plain static HTML/CSS/JS with no build step. Cloudflare
+# runs `npx wrangler deploy`, which reads this file to learn that the repo
+# root IS the site (the [assets] block below).
+#
+# `main` points at a small Worker script (src/worker.js) that handles one
+# custom route — POST /api/contact, the contact-form backend — and falls
+# through to env.ASSETS.fetch() for everything else, which serves the static
+# site exactly as before. Without `main`/the ASSETS binding, /api/contact has
+# nothing to run against and the form would fail silently in production.
 #
 # `name` must match the Worker/project name in the Cloudflare dashboard.
 name = "xebra-holdings-site"
 compatibility_date = "2026-07-15"
+main = "src/worker.js"
 
 [assets]
 # Serve the repo root. Files listed in .assetsignore are NOT uploaded.
@@ -16,3 +22,5 @@ compatibility_date = "2026-07-15"
 directory = "."
 # Serve the branded 404.html (with a 404 status) for any unmatched path.
 not_found_handling = "404-page"
+# Exposes static-asset serving to the Worker as env.ASSETS.fetch(request).
+binding = "ASSETS"

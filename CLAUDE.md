@@ -114,18 +114,40 @@ The repo lives on GitHub (`IsaacLussier/xebra-holdings-site`, private) and
 auto-deploys on every push to `main`.
 
 - Cloudflare runs `npx wrangler deploy`. `wrangler.toml` at the repo root
-  configures an assets-only Worker (`[assets] directory = "."`) — there is
-  no Worker script and no build step. Without `wrangler.toml` the build
-  fails with "Could not detect a directory containing static files."
+  configures the assets directory (`[assets] directory = "."`) AND a Worker
+  script (`main = "src/worker.js"`) — see below. Without `wrangler.toml` the
+  build fails with "Could not detect a directory containing static files."
 - `.assetsignore` keeps non-site files (`CLAUDE.md`, `README.md`,
-  `serve.ps1`, config) from being uploaded as public assets. **If you add
-  any sensitive file to the repo root, add it to `.assetsignore` too** —
-  otherwise it becomes publicly fetchable at xebraholdings.com/<file>.
+  `serve.ps1`, `src/`, config) from being uploaded as public assets. **If
+  you add any sensitive file to the repo root, add it to `.assetsignore`
+  too** — otherwise it becomes publicly fetchable at xebraholdings.com/<file>.
 - Home page is `index.html` (Cloudflare serves it at `/`). Clean URLs
   `/privacy-policy` and `/terms` come from the default asset html-handling.
 - Custom domain `xebraholdings.com` is attached in the Cloudflare dashboard.
-- Still no build step / framework / npm for the site itself — plain
-  HTML/CSS/vanilla JS, which also keeps the paste-into-GHL option open.
+- Still no build step / framework / npm for the site's HTML/CSS itself —
+  plain HTML/CSS/vanilla JS.
+
+### Contact form backend (`src/worker.js`, `src/contact.js`)
+
+The home page's "Contact Us" modal POSTs to `/api/contact`. That route is
+handled by a small Worker script — **not** Cloudflare Pages Functions (this
+project deploys as a Worker via `wrangler deploy`, not Pages, so the
+`functions/` directory convention does not apply here and must not be used).
+
+- `wrangler.toml` sets `main = "src/worker.js"` and `[assets] binding =
+  "ASSETS"`. `src/worker.js` routes `POST /api/contact` to the handler in
+  `src/contact.js`; everything else falls through to `env.ASSETS.fetch()`,
+  which serves the static site exactly as before.
+- `src/contact.js` validates the submission server-side (name, business,
+  industry, 10-digit phone, optional email, required consent checkbox),
+  filters a honeypot field, then forwards the lead into **GoHighLevel**
+  (the CRM / single source of truth — not Resend or any other email
+  service) via an Inbound Webhook, tagged `website-contact-form`, with a
+  full A2P consent record (consent text, timestamp, IP, user-agent).
+- Required Cloudflare secret: `GHL_WEBHOOK_URL` (Cloudflare dashboard →
+  this Worker → Settings → Variables and Secrets → add as a **Secret**,
+  never committed to the repo). Until it's set, the form fails gracefully
+  and tells the visitor to email isaac@xebraholdings.com directly.
 
 **GHL is unaffected.** The phone number, calendar, workflows
 (missed-call-to-text, lead follow-up), and A2P 10DLC registration all run on
