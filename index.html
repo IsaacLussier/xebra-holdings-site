@@ -563,19 +563,7 @@ html, body { margin: 0; padding: 0; }
 /* ---------- booking modal ---------- */
 .xh-modal .xh-dialog-lg { max-width: 640px; }
 .xh-modal .xh-booking-embed { padding: 20px 28px 0; }
-.xh-modal .xh-booking-placeholder {
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
-  border: 1.5px dashed rgba(11,11,13,.22);
-  border-radius: 6px;
-  color: #6E6E74;
-  font-size: 13.5px;
-  background: rgba(11,11,13,.03);
-}
+.xh-modal .xh-booking-embed iframe { min-height: 650px; }
 .xh-modal .xh-booking-fallback {
   padding: 18px 28px 28px;
   margin: 0;
@@ -794,21 +782,18 @@ html, body { margin: 0; padding: 0; }
       <p>Pick a slot on our calendar — no back-and-forth needed.</p>
     </div>
 
-    <div class="xh-booking-embed">
-      <!--
-        TODO: paste the GHL calendar embed snippet here (GHL: Sites > Calendars >
-        [consultation calendar] > Embed). Once it's in place, delete the
-        .xh-booking-placeholder div below — it's only a stand-in so the modal
-        isn't blank during preview.
+    <!--
+      GHL "Free Consultation" calendar embed (Settings > Calendars > Meetings >
+      Free Consultation > Share calendar > Embed code).
 
-        Also once the calendar exists in GHL, set up a workflow on that
-        calendar's "Appointment Booked" trigger to tag the contact
-        `website-booking` — that's GHL-side config, not something this file
-        can do.
-      -->
-      <div class="xh-booking-placeholder">
-        Calendar embed goes here — see TODO comment in the HTML.
-      </div>
+      Outstanding: set up a GHL workflow on this calendar's "Appointment
+      Booked" trigger to tag the contact `website-booking` — that's GHL-side
+      config, not something this file can do.
+    -->
+    <div class="xh-booking-embed">
+      <iframe src="https://api.leadconnectorhq.com/widget/booking/FXMuuIcR3EXlSodHsiS8"
+              allow="payment" style="width: 100%; border: none; overflow: hidden;"
+              scrolling="no" id="FXMuuIcR3EXlSodHsiS8_1785786669811"></iframe>
     </div>
 
     <p class="xh-fineprint xh-booking-fallback">
@@ -817,6 +802,7 @@ html, body { margin: 0; padding: 0; }
     </p>
   </div>
 </div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
 <script>
 (function () {
