@@ -1,9 +1,45 @@
-<!-- Xebra Holdings LLC — Home. Self-contained fragment for GHL Custom Code / HTML element. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xebra Holdings | AI Automation for Home Service Contractors — Kalamazoo & Battle Creek</title>
+<meta name="description" content="Xebra Holdings builds SMS-based automation for HVAC, plumbing, electrical, roofing, and tree service businesses in Kalamazoo and Battle Creek, MI — missed-call-to-text, lead follow-up, and review automation that runs itself.">
+<link rel="canonical" href="https://xebraholdings.com/">
+
+<meta property="og:title" content="Xebra Holdings | Never Miss Another Lead">
+<meta property="og:description" content="SMS-based automation for home service contractors — missed-call-to-text, lead follow-up, and review requests, built for Kalamazoo and Battle Creek shops.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xebraholdings.com/">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Xebra Holdings LLC",
+  "url": "https://xebraholdings.com",
+  "telephone": "+1-269-394-4135",
+  "priceRange": "$$",
+  "description": "AI-powered automation for home service contractors — missed-call-to-text, lead follow-up, and review automation.",
+  "areaServed": [
+    { "@type": "City", "name": "Battle Creek", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } },
+    { "@type": "City", "name": "Kalamazoo", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } },
+    { "@type": "City", "name": "Grand Rapids", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Battle Creek",
+    "addressRegion": "MI",
+    "addressCountry": "US"
+  }
+}
+</script>
+</head>
+<body>
 <div class="xh">
 <style>
 html, body { margin: 0; padding: 0; }
@@ -783,17 +819,21 @@ html, body { margin: 0; padding: 0; }
     </div>
 
     <!--
-      GHL "Free Consultation" calendar embed (Settings > Calendars > Meetings >
-      Free Consultation > Share calendar > Embed code).
+      GHL calendar embed — dedicated "website booking" calendar (a duplicate
+      of the original Free Consultation calendar), kept separate from the
+      calendar used by the missed-call-text-back automation so the two lead
+      sources can be told apart. See Settings > Calendars > Meetings >
+      [website booking calendar] > Share calendar > Embed code.
 
-      Outstanding: set up a GHL workflow on this calendar's "Appointment
-      Booked" trigger to tag the contact `website-booking` — that's GHL-side
-      config, not something this file can do.
+      Outstanding: on the GHL "Booking - Website Consultation" workflow,
+      add an "In calendar" filter scoped to this specific calendar so it
+      only tags bookings that came through this embed, not the
+      missed-call-text-back calendar.
     -->
     <div class="xh-booking-embed">
-      <iframe src="https://api.leadconnectorhq.com/widget/booking/FXMuuIcR3EXlSodHsiS8"
+      <iframe src="https://api.leadconnectorhq.com/widget/booking/8SCQeNrbqxJAz1xiGUe8"
               allow="payment" style="width: 100%; border: none; overflow: hidden;"
-              scrolling="no" id="FXMuuIcR3EXlSodHsiS8_1785786669811"></iframe>
+              scrolling="no" id="8SCQeNrbqxJAz1xiGUe8_1785791606218"></iframe>
     </div>
 
     <p class="xh-fineprint xh-booking-fallback">
@@ -1021,3 +1061,5 @@ html, body { margin: 0; padding: 0; }
 </script>
 
 </div>
+</body>
+</html>
