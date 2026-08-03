@@ -1,9 +1,45 @@
-<!-- Xebra Holdings LLC — Home. Self-contained fragment for GHL Custom Code / HTML element. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xebra Holdings | AI Automation for Home Service Contractors — Kalamazoo & Battle Creek</title>
+<meta name="description" content="Xebra Holdings builds SMS-based automation for HVAC, plumbing, electrical, roofing, and tree service businesses in Kalamazoo and Battle Creek, MI — missed-call-to-text, lead follow-up, and review automation that runs itself.">
+<link rel="canonical" href="https://xebraholdings.com/">
+
+<meta property="og:title" content="Xebra Holdings | Never Miss Another Lead">
+<meta property="og:description" content="SMS-based automation for home service contractors — missed-call-to-text, lead follow-up, and review requests, built for Kalamazoo and Battle Creek shops.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xebraholdings.com/">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Xebra Holdings LLC",
+  "url": "https://xebraholdings.com",
+  "telephone": "+1-269-394-4135",
+  "priceRange": "$$",
+  "description": "AI-powered automation for home service contractors — missed-call-to-text, lead follow-up, and review automation.",
+  "areaServed": [
+    { "@type": "City", "name": "Battle Creek", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } },
+    { "@type": "City", "name": "Kalamazoo", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } },
+    { "@type": "City", "name": "Grand Rapids", "containedInPlace": { "@type": "AdministrativeArea", "name": "Michigan" } }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Battle Creek",
+    "addressRegion": "MI",
+    "addressCountry": "US"
+  }
+}
+</script>
+</head>
+<body>
 <div class="xh">
 <style>
 html, body { margin: 0; padding: 0; }
@@ -535,6 +571,44 @@ html, body { margin: 0; padding: 0; }
   font-size: 14.5px; color: #43434a;
   max-width: 340px; margin: 0 auto 26px;
 }
+
+/* ---------- sticky CTA (appears after ~400px scroll) ---------- */
+.xh-sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+  background: rgba(11,11,13,.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(247,245,240,.12);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .25s ease, opacity .25s ease;
+  pointer-events: none;
+}
+.xh-sticky-cta.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.xh-sticky-cta .btn-primary { width: 100%; max-width: 360px; text-align: center; }
+
+/* ---------- booking modal ---------- */
+.xh-modal .xh-dialog-lg { max-width: 640px; }
+.xh-modal .xh-booking-embed { padding: 20px 28px 0; }
+.xh-modal .xh-booking-embed iframe { min-height: 650px; }
+.xh-modal .xh-booking-fallback {
+  padding: 18px 28px 28px;
+  margin: 0;
+}
+.xh-modal .xh-booking-fallback a {
+  color: #7a2fd6;
+  font-weight: 600;
+  text-decoration: underline;
+}
 </style>
 
 <header>
@@ -544,10 +618,16 @@ html, body { margin: 0; padding: 0; }
       <a href="/">Home</a>
       <a href="/privacy-policy">Privacy Policy</a>
       <a href="/terms">Terms</a>
-      <a class="nav-cta js-open-contact" href="#contact" role="button">Contact Us</a>
+      <a class="nav-cta js-open-booking" href="#book" role="button">Book a Consultation</a>
     </nav>
   </div>
 </header>
+
+<!-- sticky CTA — appears after ~400px of scroll, gives mobile (nav-links are hidden
+     below 860px) and desktop visitors a persistent way to reach the primary CTA -->
+<div class="xh-sticky-cta" id="xhStickyCta">
+  <a class="btn-primary js-open-booking" href="#book" role="button">Book a Consultation</a>
+</div>
 
 <div class="stripes"></div>
 
@@ -558,7 +638,7 @@ html, body { margin: 0; padding: 0; }
     <h1>Never miss another lead. <em>Automatically follow up on every one.</em></h1>
     <p class="lead">Xebra Holdings builds SMS-based automation for home service businesses — missed-call-to-text with instant booking, lead follow-up sequences, and review requests that run themselves.</p>
     <div class="btn-row">
-      <a class="btn-primary js-open-contact" href="#contact" role="button">Contact Us</a>
+      <a class="btn-primary js-open-booking" href="#book" role="button">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -619,9 +699,10 @@ html, body { margin: 0; padding: 0; }
   <div class="wrap">
     <span class="kicker">Get Started</span>
     <h2>Let's stop the leads from slipping through.</h2>
-    <p>Tell us about your shop and we'll be in touch to see if this is a fit.</p>
-    <a class="btn-primary js-open-contact" href="#contact" role="button">Contact Us</a>
+    <p>Grab a time on the calendar, or send us a message and we'll be in touch.</p>
+    <a class="btn-primary js-open-booking" href="#book" role="button">Book a Consultation</a>
     <div class="contact-row">
+      <a class="js-open-contact" href="#contact" role="button">Or send us a message</a>
       <a href="mailto:isaac@xebraholdings.com">isaac@xebraholdings.com</a>
     </div>
   </div>
@@ -631,6 +712,7 @@ html, body { margin: 0; padding: 0; }
   <div class="wrap foot-row">
     <div>&copy; 2026 Xebra Holdings LLC. All rights reserved.</div>
     <div class="foot-links">
+      <a class="js-open-contact" href="#contact" role="button">Contact Us</a>
       <a href="/privacy-policy">Privacy Policy</a>
       <a href="/terms">Terms &amp; Conditions</a>
     </div>
@@ -648,10 +730,11 @@ html, body { margin: 0; padding: 0; }
     </div>
 
     <!--
-      SUBMISSION: this form POSTs (JSON) to the Cloudflare Pages Function at
-      /api/contact (see functions/api/contact.js), which validates server-side,
-      filters spam, and forwards the lead into GoHighLevel via an Inbound
-      Webhook. The GHL webhook URL lives in a Cloudflare secret, never here.
+      SUBMISSION: this form POSTs (JSON) to /api/contact, handled by the
+      Cloudflare Worker at src/worker.js -> src/contact.js, which validates
+      server-side, filters spam, and forwards the lead into GoHighLevel via
+      an Inbound Webhook. The GHL webhook URL lives in a Cloudflare secret,
+      never here.
     -->
     <form id="xhContactForm" novalidate>
       <!-- honeypot: hidden from humans, bots fill it and get silently dropped -->
@@ -725,6 +808,42 @@ html, body { margin: 0; padding: 0; }
   </div>
 </div>
 
+<!-- ---------- booking modal ---------- -->
+<div class="xh-modal" id="xhBookingModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="xhBookingTitle">
+  <div class="xh-dialog xh-dialog-lg">
+    <button type="button" class="xh-close js-close-booking" aria-label="Close">&times;</button>
+    <div class="xh-dialog-top">
+      <span class="kick">Book a Consultation</span>
+      <h3 id="xhBookingTitle">Grab a time that works</h3>
+      <p>Pick a slot on our calendar — no back-and-forth needed.</p>
+    </div>
+
+    <!--
+      GHL calendar embed — dedicated "website booking" calendar (a duplicate
+      of the original Free Consultation calendar), kept separate from the
+      calendar used by the missed-call-text-back automation so the two lead
+      sources can be told apart. See Settings > Calendars > Meetings >
+      [website booking calendar] > Share calendar > Embed code.
+
+      Outstanding: on the GHL "Booking - Website Consultation" workflow,
+      add an "In calendar" filter scoped to this specific calendar so it
+      only tags bookings that came through this embed, not the
+      missed-call-text-back calendar.
+    -->
+    <div class="xh-booking-embed">
+      <iframe src="https://api.leadconnectorhq.com/widget/booking/8SCQeNrbqxJAz1xiGUe8"
+              allow="payment" style="width: 100%; border: none; overflow: hidden;"
+              scrolling="no" id="8SCQeNrbqxJAz1xiGUe8_1785791606218"></iframe>
+    </div>
+
+    <p class="xh-fineprint xh-booking-fallback">
+      Not ready to book?
+      <a href="#contact" class="js-swap-to-contact" role="button">Send us a message instead</a>
+    </p>
+  </div>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
 <script>
 (function () {
   var modal = document.getElementById('xhContactModal');
@@ -765,18 +884,64 @@ html, body { margin: 0; padding: 0; }
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  // open triggers (event delegation, so it works no matter when the DOM loads)
+  // ---- booking modal (calendar embed — see TODO in its HTML) ----
+  var bookingModal = document.getElementById('xhBookingModal');
+  var bookingLastFocus = null;
+
+  function openBookingModal(e) {
+    if (e) e.preventDefault();
+    bookingLastFocus = document.activeElement;
+    bookingModal.classList.add('is-open');
+    bookingModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var closeBtn = bookingModal.querySelector('.js-close-booking');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeBookingModal() {
+    bookingModal.classList.remove('is-open');
+    bookingModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (bookingLastFocus && bookingLastFocus.focus) bookingLastFocus.focus();
+  }
+
+  // open/close triggers for both modals (event delegation, works regardless of DOM load order)
   document.addEventListener('click', function (e) {
-    var opener = e.target.closest ? e.target.closest('.js-open-contact') : null;
-    if (opener) { openModal(e); return; }
-    var closer = e.target.closest ? e.target.closest('.js-close-contact') : null;
-    if (closer) { closeModal(); return; }
-    if (e.target === modal) { closeModal(); }   // click on backdrop
+    var t = e.target;
+    var openContact = t.closest ? t.closest('.js-open-contact') : null;
+    if (openContact) { closeBookingModal(); openModal(e); return; }
+
+    var openBooking = t.closest ? t.closest('.js-open-booking') : null;
+    if (openBooking) { openBookingModal(e); return; }
+
+    var swapToContact = t.closest ? t.closest('.js-swap-to-contact') : null;
+    if (swapToContact) { e.preventDefault(); closeBookingModal(); openModal(); return; }
+
+    var closeContact = t.closest ? t.closest('.js-close-contact') : null;
+    if (closeContact) { closeModal(); return; }
+
+    var closeBooking = t.closest ? t.closest('.js-close-booking') : null;
+    if (closeBooking) { closeBookingModal(); return; }
+
+    if (t === modal) { closeModal(); return; }        // contact backdrop click
+    if (t === bookingModal) { closeBookingModal(); }   // booking backdrop click
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    if (e.key !== 'Escape') return;
+    if (modal.classList.contains('is-open')) closeModal();
+    if (bookingModal.classList.contains('is-open')) closeBookingModal();
   });
+
+  // ---- sticky CTA: reveal after ~400px of scroll ----
+  var stickyCta = document.getElementById('xhStickyCta');
+  if (stickyCta) {
+    var onScroll = function () {
+      stickyCta.classList.toggle('is-visible', window.scrollY > 400);
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   // ---- phone: digits only, auto-format to (XXX) XXX-XXXX ----
   var phoneEl = document.getElementById('xhPhone');
@@ -896,3 +1061,5 @@ html, body { margin: 0; padding: 0; }
 </script>
 
 </div>
+</body>
+</html>
