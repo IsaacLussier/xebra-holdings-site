@@ -4,11 +4,16 @@
 # runs `npx wrangler deploy`, which reads this file to learn that the repo
 # root IS the site (the [assets] block below).
 #
-# `main` points at a small Worker script (src/worker.js) that handles one
-# custom route — POST /api/contact, the contact-form backend — and falls
-# through to env.ASSETS.fetch() for everything else, which serves the static
-# site exactly as before. Without `main`/the ASSETS binding, /api/contact has
-# nothing to run against and the form would fail silently in production.
+# `main` points at a small Worker script (src/worker.js) that handles:
+#   1. POST /api/contact — the contact-form backend.
+#   2. Every HTML response — runs through HTMLRewriter to inject the shared
+#      header/modal chrome from src/chrome.js (see that file for why).
+# Both need the Worker to actually run on every request, including ones that
+# match a real static file (index.html, privacy-policy.html, etc.) — that's
+# what `run_worker_first` below is for. Without it, Cloudflare's default
+# behavior serves matched static files directly and skips the Worker
+# entirely, silently breaking the header/modal injection for every real page
+# (it only ever ran for /api/contact, which never matches a static file).
 #
 # `name` must match the Worker/project name in the Cloudflare dashboard.
 name = "xebra-holdings-site"
@@ -24,3 +29,6 @@ directory = "."
 not_found_handling = "404-page"
 # Exposes static-asset serving to the Worker as env.ASSETS.fetch(request).
 binding = "ASSETS"
+# Route every request through the Worker first (see note above) instead of
+# letting matched static files bypass it.
+run_worker_first = true
