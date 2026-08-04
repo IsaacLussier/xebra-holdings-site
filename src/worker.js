@@ -5,11 +5,18 @@
 // static site (index.html, privacy-policy.html, terms.html, 404.html) for
 // everything this Worker doesn't handle itself.
 //
-// The only custom route here is POST /api/contact — the contact-form
-// handler. Everything else falls straight through to static asset serving,
-// so this file must keep working even if the contact form logic changes.
+// Two custom behaviors here:
+//   1. POST /api/contact — the contact-form handler.
+//   2. Every HTML response gets run through HTMLRewriter to fill in the
+//      shared header/modal "chrome" (see src/chrome.js) — this is what
+//      keeps the header and Book a Consultation / Contact Us modals
+//      identical across every page from one source, instead of each page
+//      carrying its own copy that can drift out of sync (which is exactly
+//      what happened before this existed — privacy-policy.html and
+//      terms.html kept showing a stale header after index.html changed).
 
 import { handleContact } from './contact.js';
+import { HEADER_HTML, MODALS_HTML } from './chrome.js';
 
 export default {
   async fetch(request, env, ctx) {
@@ -19,6 +26,20 @@ export default {
       return handleContact(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('text/html')) {
+      return response;
+    }
+
+    return new HTMLRewriter()
+      .on('#xh-header-slot', {
+        element(el) { el.setInnerContent(HEADER_HTML, { html: true }); }
+      })
+      .on('#xh-modals-slot', {
+        element(el) { el.setInnerContent(MODALS_HTML, { html: true }); }
+      })
+      .transform(response);
   }
 };

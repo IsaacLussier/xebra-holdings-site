@@ -9,3 +9,6 @@ Desktop.ini
 
 # Claude Code local settings (keep shared config, ignore per-machine overrides)
 .claude/settings.local.json
+
+# Wrangler local dev cache/state (from `wrangler dev`)
+.wrangler/
