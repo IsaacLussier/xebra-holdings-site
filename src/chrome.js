@@ -604,12 +604,12 @@ export const MODALS_HTML = `
       }
       statusEl.className = 'xh-status is-error';
       statusEl.textContent = r.data.error ||
-        'Something went wrong. Please try again, or email isaac@xebraholdings.com.';
+        'Something went wrong. Please try again, or email hello@xebraholdings.com.';
     })
     .catch(function () {
       statusEl.className = 'xh-status is-error';
       statusEl.textContent =
-        "Couldn't reach the server. Please email isaac@xebraholdings.com directly.";
+        "Couldn't reach the server. Please email hello@xebraholdings.com directly.";
     })
     .then(function () {
       submitBtn.disabled = false;

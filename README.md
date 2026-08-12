@@ -80,7 +80,7 @@ Both must survive any redesign. See `CLAUDE.md` for full project context.
 
 ## Contact shown on the site
 
-Email only: `isaac@xebraholdings.com`. The phone number is deliberately **not**
+Email only: `hello@xebraholdings.com`. The phone number is deliberately **not**
 published — it's an internal GHL number for outbound automated SMS and cold
 calls and cannot receive inbound calls.
 

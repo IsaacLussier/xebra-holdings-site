@@ -82,7 +82,7 @@ Location: this project folder, `index.html` (home), `privacy-policy.html`,
 - Logo: "Xebra" wordmark + small "Holdings LLC" tag — no slash or glyph
   (Isaac rejected the slash). Header reads "Xebra Holdings LLC" (the
   registered entity name); the "Consulting" wordmark was reverted 7/2026.
-- Contact on the pages: email only, isaac@xebraholdings.com (the only
+- Contact on the pages: email only, hello@xebraholdings.com (the only
   live inbox — hello@ does not exist). The phone (269) 394-4135 is
   deliberately NOT published: it's an internal GHL number for outbound
   automated SMS/cold calls and can't receive inbound calls yet. Don't
@@ -147,7 +147,7 @@ project deploys as a Worker via `wrangler deploy`, not Pages, so the
 - Required Cloudflare secret: `GHL_WEBHOOK_URL` (Cloudflare dashboard →
   this Worker → Settings → Variables and Secrets → add as a **Secret**,
   never committed to the repo). Until it's set, the form fails gracefully
-  and tells the visitor to email isaac@xebraholdings.com directly.
+  and tells the visitor to email hello@xebraholdings.com directly.
 
 **GHL is unaffected.** The phone number, calendar, workflows
 (missed-call-to-text, lead follow-up), and A2P 10DLC registration all run on

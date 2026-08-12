@@ -79,7 +79,7 @@ export async function handleContact(request, env) {
   // ---- config check ----
   if (!env.GHL_WEBHOOK_URL) {
     console.log('contact: GHL_WEBHOOK_URL is not set');
-    return json({ ok: false, error: 'The contact form is not fully set up yet. Please email isaac@xebraholdings.com.' }, 500);
+    return json({ ok: false, error: 'The contact form is not fully set up yet. Please email hello@xebraholdings.com.' }, 500);
   }
 
   // ---- build the payload GHL will map into a tagged contact ----
@@ -118,13 +118,13 @@ export async function handleContact(request, env) {
     });
   } catch (e) {
     console.log('contact: fetch to GHL threw', e && e.message);
-    return json({ ok: false, error: "Couldn't submit right now. Please email isaac@xebraholdings.com." }, 502);
+    return json({ ok: false, error: "Couldn't submit right now. Please email hello@xebraholdings.com." }, 502);
   }
 
   if (!res.ok) {
     const detail = await res.text().catch(function () { return ''; });
     console.log('contact: GHL responded', res.status, detail);
-    return json({ ok: false, error: "Couldn't submit right now. Please email isaac@xebraholdings.com." }, 502);
+    return json({ ok: false, error: "Couldn't submit right now. Please email hello@xebraholdings.com." }, 502);
   }
 
   return json({ ok: true });
