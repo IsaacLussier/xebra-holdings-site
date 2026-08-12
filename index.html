@@ -144,8 +144,9 @@ html, body { margin: 0; padding: 0; }
   width: 320px;
   height: 320px;
   background-image: repeating-linear-gradient(-45deg,
-    var(--off-white) 0, var(--off-white) 12px,
-    transparent 12px, transparent 24px);
+    var(--off-white) 0, var(--off-white) 14px,
+    transparent 14px, transparent 28px);
+  background-position: var(--corner-shift-x, calc(280px - 100vw)) var(--corner-shift-y, 26px);
   opacity: .10;
   clip-path: polygon(30% 0, 100% 0, 100% 70%);
 }
@@ -466,6 +467,28 @@ html, body { margin: 0; padding: 0; }
 </footer>
 
 <div id="xh-modals-slot"></div>
+
+<script>
+(function () {
+  function alignHeroCorner() {
+    var stripes = document.querySelector('.xh .stripes');
+    var corner = document.querySelector('.xh .hero-corner');
+    if (!stripes || !corner) return;
+    var sRect = stripes.getBoundingClientRect();
+    var cRect = corner.getBoundingClientRect();
+    var x = sRect.left - cRect.left;
+    var y = sRect.top - cRect.top;
+    corner.style.setProperty('--corner-shift-x', x + 'px');
+    corner.style.setProperty('--corner-shift-y', y + 'px');
+  }
+  alignHeroCorner();
+  window.addEventListener('load', alignHeroCorner);
+  window.addEventListener('resize', alignHeroCorner);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(alignHeroCorner);
+  }
+})();
+</script>
 
 </div>
 </body>
