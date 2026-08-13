@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missed Call ROI Calculator | Xebra Holdings LLC</title>
+<meta name="description" content="See what missed calls are actually costing your home service business. Enter your average job value, missed calls per week, and close rate to get an instant estimate.">
+<link rel="canonical" href="https://xebraholdings.com/calculator">
+
+<meta property="og:title" content="Missed Call ROI Calculator | Xebra Holdings">
+<meta property="og:description" content="See what missed calls are actually costing your home service business — get an instant revenue estimate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xebraholdings.com/calculator">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="xh">
+<style>
+html, body { margin: 0; padding: 0; }
+.xh {
+  --black: #0B0B0D;
+  --black-soft: #17171B;
+  --off-white: #F7F5F0;
+  --off-white-dim: #EAE7DF;
+  --purple: #A742FF;
+  --purple-light: #C98BFF;
+  --purple-glow: rgba(167,66,255,.35);
+  --gray: #6E6E74;
+  --border: rgba(11,11,13,.12);
+  --border-light: rgba(247,245,240,.16);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--black);
+  background: var(--off-white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.xh * { box-sizing: border-box; }
+.xh h1, .xh h2, .xh h3, .xh .x-logo {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.xh a { color: inherit; text-decoration: none; }
+.xh .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- signature stripe divider ---------- */
+.xh .stripes {
+  height: 14px;
+  width: 100%;
+  background-image: repeating-linear-gradient(-45deg,
+    var(--black) 0, var(--black) 14px,
+    var(--off-white) 14px, var(--off-white) 28px);
+}
+
+/* ---------- header ---------- */
+.xh header {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+}
+.xh .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+.xh .x-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+.xh .x-logo .sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+.xh .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.xh .nav-links a:hover { color: var(--purple); }
+.xh .nav-cta {
+  background: var(--black);
+  color: var(--off-white) !important;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: box-shadow .15s ease;
+}
+.xh .nav-cta:hover { box-shadow: 0 0 0 2px var(--purple); }
+
+/* ---------- page title band ---------- */
+.xh .page-head {
+  background: var(--black);
+  color: var(--off-white);
+  padding: 56px 0 60px;
+}
+.xh .page-head .kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--purple-light);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.xh .page-head .kicker::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--purple);
+}
+.xh .page-head h1 { font-size: 36px; line-height: 1.15; max-width: 640px; }
+.xh .page-head p.lead {
+  margin-top: 14px;
+  font-size: 16px;
+  color: rgba(247,245,240,.72);
+  max-width: 560px;
+}
+
+/* ---------- calculator ---------- */
+.xh .calc-section { padding: 72px 0 88px; }
+.xh .calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.xh .calc-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+}
+.xh .calc-card h2 { font-size: 20px; margin-bottom: 22px; }
+.xh .calc-field { margin-bottom: 18px; }
+.xh .calc-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.xh .calc-field .hint {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--gray);
+  margin-top: 5px;
+}
+.xh .calc-field .input-prefix {
+  position: relative;
+}
+.xh .calc-field .input-prefix span {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14.5px;
+  color: var(--gray);
+  pointer-events: none;
+}
+.xh .calc-field .input-prefix input { padding-left: 26px; }
+.xh .calc-card input {
+  width: 100%;
+  padding: 12px 12px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--black);
+  background: #fff;
+  border: 1px solid rgba(11,11,13,.18);
+  border-radius: 4px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.xh .calc-card input:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(167,66,255,.16);
+}
+.xh .calc-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background: var(--purple);
+  color: var(--black);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 26px;
+  border-radius: 3px;
+  box-shadow: 0 0 24px var(--purple-glow);
+  transition: transform .15s ease, box-shadow .15s ease;
+  margin-top: 6px;
+}
+.xh .calc-submit:hover { transform: translateY(-1px); box-shadow: 0 0 34px var(--purple-glow); }
+
+.xh .calc-results {
+  background: var(--black);
+  color: var(--off-white);
+  border-radius: 6px;
+  padding: 32px;
+  min-height: 100%;
+}
+.xh .calc-results h2 { font-size: 20px; margin-bottom: 22px; color: var(--off-white); }
+.xh .calc-results .placeholder {
+  font-size: 14.5px;
+  color: rgba(247,245,240,.55);
+}
+.xh .result-row {
+  display: none;
+}
+.xh .calc-results.has-result .placeholder { display: none; }
+.xh .calc-results.has-result .result-row { display: block; }
+.xh .result-figure { margin-bottom: 22px; }
+.xh .result-figure .label {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,.55);
+  margin-bottom: 6px;
+}
+.xh .result-figure .value {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--purple-light);
+}
+.xh .result-figure.secondary .value { font-size: 22px; color: var(--off-white); }
+.xh .result-fee {
+  font-size: 14px;
+  color: rgba(247,245,240,.75);
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  background: rgba(247,245,240,.06);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+.xh .result-fee strong { color: var(--off-white); }
+.xh .result-note {
+  font-size: 13.5px;
+  color: rgba(247,245,240,.6);
+  margin: 22px 0 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-light);
+}
+.xh .result-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.xh .btn-primary {
+  background: var(--purple);
+  color: var(--black);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 13px 22px;
+  border-radius: 3px;
+  box-shadow: 0 0 24px var(--purple-glow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.xh .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 34px var(--purple-glow); }
+.xh .btn-ghost {
+  border: 1.5px solid var(--border-light);
+  color: var(--off-white);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 13px 22px;
+  border-radius: 3px;
+  transition: border-color .15s ease;
+}
+.xh .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple-light); }
+
+.xh .calc-disclaimer {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 0 28px;
+  font-size: 12.5px;
+  color: var(--gray);
+  text-align: center;
+}
+
+/* ---------- stat callout ---------- */
+.xh .stat-band { padding: 0 0 8px; display: none; }
+.xh .stat-band.is-visible { display: block; }
+.xh .stat-callout {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--purple);
+  border-radius: 6px;
+  padding: 22px 26px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 1;
+}
+.xh .stat-callout .stat-num {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--purple);
+  white-space: nowrap;
+}
+.xh .stat-callout p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--black);
+}
+.xh .stat-callout p .gray { color: var(--gray); }
+
+/* ---------- footer ---------- */
+.xh footer {
+  background: var(--black);
+  color: rgba(247,245,240,.55);
+  padding: 32px 0 40px;
+  font-size: 13px;
+}
+.xh footer .foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.xh footer a:hover { color: var(--purple-light); }
+.xh footer .foot-links { display: flex; gap: 22px; }
+
+@media (max-width: 860px) {
+  .xh .nav-links { display: none; }
+  .xh .page-head h1 { font-size: 28px; }
+  .xh .calc-grid { grid-template-columns: 1fr; }
+  .xh .calc-results { min-height: 0; }
+}
+</style>
+
+<div id="xh-header-slot"></div>
+
+<div class="stripes"></div>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">Free Tool</span>
+    <h1>What are missed calls actually costing you?</h1>
+    <p class="lead">Every missed call is a lead that called someone else instead. Plug in your numbers below to see what that adds up to in a year.</p>
+  </div>
+</section>
+
+<div class="stat-band">
+  <div class="wrap">
+    <div class="stat-callout">
+      <div class="stat-num">25&ndash;40%</div>
+      <p>of inbound calls at home service businesses go <span class="gray">unanswered entirely</span> &mdash; on average. Every one of those is a lead that just called the next name on the list.</p>
+    </div>
+  </div>
+</div>
+
+<section class="calc-section">
+  <div class="wrap">
+    <div class="calc-grid">
+
+      <div class="calc-card">
+        <h2>Your Numbers</h2>
+        <form id="xhCalcForm" novalidate>
+          <div class="calc-field">
+            <label for="calcJobValue">Average job value</label>
+            <div class="input-prefix"><span>$</span>
+              <input type="number" id="calcJobValue" inputmode="decimal" min="0" step="1" placeholder="1200" required>
+            </div>
+            <span class="hint">What a typical job is worth to your business.</span>
+          </div>
+          <div class="calc-field">
+            <label for="calcMissedCalls">Estimate how many calls your business phone misses per week here</label>
+            <input type="number" id="calcMissedCalls" inputmode="numeric" min="0" step="1" placeholder="14" required>
+          </div>
+          <div class="calc-field">
+            <label for="calcCloseRate">Your close rate</label>
+            <input type="text" id="calcCloseRate" inputmode="decimal" maxlength="4" placeholder="45%" required>
+            <span class="hint">Of the calls you do answer, what share turn into booked jobs?</span>
+          </div>
+          <button type="submit" class="calc-submit">Calculate My Missed Revenue</button>
+        </form>
+      </div>
+
+      <div class="calc-results" id="xhCalcResults">
+        <h2>What You're Leaving on the Table</h2>
+        <p class="placeholder">Fill in your numbers and hit calculate to see your estimate.</p>
+
+        <div class="result-row">
+          <div class="result-figure">
+            <div class="label">Estimated revenue lost per month</div>
+            <div class="value" id="resMonthly">$0</div>
+          </div>
+          <div class="result-figure secondary">
+            <div class="label">Estimated revenue lost per year</div>
+            <div class="value" id="resAnnual">$0</div>
+          </div>
+          <div class="result-fee">
+            We charge <strong>$297/mo</strong> to recover your missed calls and turn them into booked jobs.
+          </div>
+          <div class="result-figure">
+            <div class="label">Estimated ROI</div>
+            <div class="value" id="resROI">0%</div>
+          </div>
+          <p class="result-note" id="resNote"></p>
+          <div class="result-cta">
+            <a href="#book" class="btn-primary js-open-booking" role="button">Book a Consultation</a>
+            <a href="#contact" class="btn-ghost js-open-contact" role="button">Send a Message</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p class="calc-disclaimer">This is a rough estimate, not a quote. It assumes each missed call could have been a job at your stated close rate, that our automation recovers an estimated 40% of those missed calls, and is calculated across a 52-week year. Actual results depend on your market, lead quality, and follow-up.</p>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>&copy; 2026 Xebra Holdings LLC. All rights reserved.</div>
+    <div class="foot-links">
+      <a class="js-open-contact" href="#contact" role="button">Contact Us</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<div id="xh-modals-slot"></div>
+
+<script>
+(function () {
+  var FEE = 297;
+  var RECOVERY_RATE = 0.40; // assumed share of missed calls our automation recovers into booked jobs
+  var form = document.getElementById('xhCalcForm');
+  var results = document.getElementById('xhCalcResults');
+  var statBand = document.querySelector('.stat-band');
+  var money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var pct = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+
+  // ---- close rate: digits only, trailing % follows the entered number ----
+  var closeRateEl = document.getElementById('calcCloseRate');
+  closeRateEl.addEventListener('input', function () {
+    var caretAtEnd = this.selectionStart === this.value.length;
+    var digits = this.value.replace(/[^\d]/g, '').slice(0, 3);
+    if (digits !== '' && parseInt(digits, 10) > 100) digits = '100';
+    this.value = digits === '' ? '' : digits + '%';
+    if (caretAtEnd) { var p = this.value.length - 1; this.setSelectionRange(p, p); }
+  });
+  closeRateEl.addEventListener('keypress', function (e) {
+    if (e.key && e.key.length === 1 && /\D/.test(e.key)) e.preventDefault();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var jobValue = parseFloat(document.getElementById('calcJobValue').value);
+    var missedCalls = parseFloat(document.getElementById('calcMissedCalls').value);
+    var closeRate = parseFloat(document.getElementById('calcCloseRate').value);
+
+    if (!(jobValue > 0) || !(missedCalls >= 0) || !(closeRate >= 0)) return;
+    closeRate = Math.min(closeRate, 100);
+
+    var weeklyLoss = jobValue * missedCalls * (closeRate / 100) * RECOVERY_RATE;
+    var monthlyLoss = weeklyLoss * (52 / 12);
+    var annualLoss = weeklyLoss * 52;
+    var roi = ((monthlyLoss - FEE) / FEE) * 100;
+
+    document.getElementById('resMonthly').textContent = money.format(monthlyLoss);
+    document.getElementById('resAnnual').textContent = money.format(annualLoss);
+    document.getElementById('resROI').textContent = pct.format(roi) + '%';
+    document.getElementById('resNote').textContent =
+      'Based on ' + missedCalls + ' missed call' + (missedCalls === 1 ? '' : 's') + '/week, a ' +
+      closeRate + '% close rate, and a ' + money.format(jobValue) + ' average job.';
+
+    results.classList.add('has-result');
+    if (statBand) statBand.classList.add('is-visible');
+  });
+})();
+</script>
+
+</div>
+</body>
+</html>

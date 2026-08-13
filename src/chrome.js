@@ -27,6 +27,7 @@ export const HEADER_HTML = `
     <div class="x-logo">Xebra<span class="sub">Holdings LLC</span></div>
     <nav class="nav-links">
       <a href="/">Home</a>
+      <a href="/calculator">Calculator</a>
       <a href="/privacy-policy">Privacy Policy</a>
       <a href="/terms">Terms</a>
       <a class="nav-cta js-open-booking" href="#book" role="button">Book a Consultation</a>
