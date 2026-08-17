@@ -27,9 +27,7 @@ export const HEADER_HTML = `
     <div class="x-logo">Xebra<span class="sub">Holdings LLC</span></div>
     <nav class="nav-links">
       <a href="/">Home</a>
-      <a href="/calculator">Calculator</a>
-      <a href="/privacy-policy">Privacy Policy</a>
-      <a href="/terms">Terms</a>
+      <a href="/calculator">ROI Calculator</a>
       <a class="nav-cta js-open-booking" href="#book" role="button">Book a Consultation</a>
     </nav>
   </div>
@@ -491,15 +489,21 @@ export const MODALS_HTML = `
     if (bookingModal.classList.contains('is-open')) closeBookingModal();
   });
 
-  // ---- sticky CTA: reveal after ~400px of scroll (index.html only — this
-  // element doesn't exist on other pages, and getElementById returns null
-  // there, so this whole block safely no-ops) ----
+  // ---- sticky CTA: reveal after ~400px of scroll, hide once the footer
+  // scrolls into view so it doesn't sit on top of the footer links
+  // (index.html only — this element doesn't exist on other pages, and
+  // getElementById returns null there, so this whole block safely no-ops) ----
   var stickyCta = document.getElementById('xhStickyCta');
+  var siteFooter = document.querySelector('footer');
   if (stickyCta) {
     var onScroll = function () {
-      stickyCta.classList.toggle('is-visible', window.scrollY > 400);
+      var pastThreshold = window.scrollY > 400;
+      var nearFooter = siteFooter &&
+        siteFooter.getBoundingClientRect().top < window.innerHeight;
+      stickyCta.classList.toggle('is-visible', pastThreshold && !nearFooter);
     };
     document.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     onScroll();
   }
 
